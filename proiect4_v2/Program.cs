@@ -38,4 +38,9 @@ public class CarService
     {
         return cars.Count(car => car.MaxSpeedKmh >= 100 && car.MaxSpeedKmh <= 200);
     }
+    public List<Car> GetAllCars()
+    {
+        return cars;
+    }
+
 }
