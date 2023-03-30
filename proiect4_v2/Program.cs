@@ -34,4 +34,8 @@ public class CarService
     {
         return cars.Where(car => car.AutonomyKm > 180).ToList();
     }
+    public int NumarMasini()
+    {
+        return cars.Count(car => car.MaxSpeedKmh >= 100 && car.MaxSpeedKmh <= 200);
+    }
 }
