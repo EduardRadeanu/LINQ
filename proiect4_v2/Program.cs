@@ -30,4 +30,8 @@ public class CarService
     {
         return cars.Where(car => car.MaxSpeedKmh > 180).ToList();
     }
+    public List<Car> GetAutonomyCars()
+    {
+        return cars.Where(car => car.AutonomyKm > 180).ToList();
+    }
 }
