@@ -21,3 +21,13 @@ public class CarRepository
         };
     }
 }
+public class CarService
+{
+    private CarRepository carRepository;
+    List<Car> cars = CarRepository.GetAll();
+
+    public List<Car> GetHighSpeedCars()
+    {
+        return cars.Where(car => car.MaxSpeedKmh > 180).ToList();
+    }
+}
