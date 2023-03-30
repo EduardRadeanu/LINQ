@@ -21,65 +21,26 @@ public class CarRepository
         };
     }
 }
-
 public class CarService
 {
     private CarRepository carRepository;
+    List<Car> cars = CarRepository.GetAll();
 
-    public CarService(CarRepository carRepository)
-    {
-        this.carRepository = carRepository;
-    }
     public List<Car> GetHighSpeedCars()
     {
-        List<Car> cars = CarRepository.GetAll();
-        List<Car> highSpeedCars = new List<Car>();
-
-        foreach (Car car in cars)
-        {
-            if (car.MaxSpeedKmh > 180)
-            {
-                highSpeedCars.Add(car);
-            }
-        }
-
-        return highSpeedCars;
+        return cars.Where(car => car.MaxSpeedKmh > 180).ToList();
     }
     public List<Car> GetAutonomyCars()
     {
-        List<Car> cars = CarRepository.GetAll();
-        List<Car> autonomiemare = new List<Car>();
-
-        foreach (Car car in cars)
-        {
-            if (car.AutonomyKm > 180)
-            {
-                autonomiemare.Add(car);
-            }
-        }
-
-        return autonomiemare;
-
+        return cars.Where(car => car.AutonomyKm > 180).ToList();
     }
     public int NumarMasini()
     {
-
-        int k = 0;
-
-        foreach (Car car in CarRepository.GetAll())
-        {
-            if (car.MaxSpeedKmh >= 100 && car.MaxSpeedKmh <= 200)
-            {
-                k++;
-            }
-        }
-
-        return k;
-
-
+        return cars.Count(car => car.MaxSpeedKmh >= 100 && car.MaxSpeedKmh <= 200);
     }
     public List<Car> GetAllCars()
     {
-        return CarRepository.GetAll();
+        return cars;
     }
+
 }
